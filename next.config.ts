@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
+
+// 배포 상태인지 확인 (개발 모드일 땐 false, 배포할 땐 true)
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
-  output: 'export',  // 정적 배포 필수 설정
+  output: 'export',
   
-  // ▼ 이 부분이 빠져서 흰 화면이 뜬 겁니다! (저장소 이름 입력)
-  basePath: '/thereyougoatta', 
+  // ★ 개발할 땐 '' (빈칸), 배포할 땐 '/thereyougoatta' 붙이기
+  basePath: isProd ? '/thereyougoatta' : '',
   
   images: {
-    unoptimized: true, // 깃허브 페이지에서 이미지 나오게 하려면 필수
+    unoptimized: true,
   },
 };
 
