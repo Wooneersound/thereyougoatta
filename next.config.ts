@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',  // 정적 사이트 내보내기 (필수)
-  basePath: '/thereyougoatta', // 저장소 이름 (필수: 이게 없으면 404 뜸!)
+  output: 'export',  // 정적 배포 필수 설정
+  
+  // ▼ 이 부분이 빠져서 흰 화면이 뜬 겁니다! (저장소 이름 입력)
+  basePath: '/thereyougoatta', 
+  
   images: {
-    unoptimized: true, // 이미지 최적화 끄기 (필수)
+    unoptimized: true, // 깃허브 페이지에서 이미지 나오게 하려면 필수
   },
 };
 
