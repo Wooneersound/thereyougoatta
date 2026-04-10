@@ -14,7 +14,7 @@ export default async function Visuals() {
         <Link href="/" className="pointer-events-auto text-sm font-bold tracking-widest hover:text-purple-400 transition-colors">
           ← BACK
         </Link>
-        <h1 className="text-5xl md:text-8xl font-black tracking-tighter mix-blend-difference opacity-50">
+        <h1 className="text-3xl md:text-6xl font-black tracking-tighter mix-blend-difference opacity-50">
           VISUALS
         </h1>
       </div>

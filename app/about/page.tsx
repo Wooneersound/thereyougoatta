@@ -5,6 +5,9 @@ import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
 export default function About() {
+  // ▶▶▶ [핵심 1] 로컬/배포 환경에 따라 경로 자동 설정 ◀◀◀
+  const prefix = '';
+
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -18,7 +21,7 @@ export default function About() {
         <Link href="/" className="pointer-events-auto text-sm font-bold tracking-widest hover:text-purple-400 transition-colors">
           ← BACK
         </Link>
-        <h1 className="text-5xl md:text-8xl font-black tracking-tighter mix-blend-difference opacity-50">
+        <h1 className="text-3xl md:text-6xl font-black tracking-tighter mix-blend-difference opacity-50">
           ABOUT
         </h1>
       </div>
@@ -32,15 +35,22 @@ export default function About() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
-          className="relative w-full aspect-[4/5] md:aspect-square rounded-2xl overflow-hidden mb-16 group shadow-2xl shadow-purple-900/20"
+          // ▶▶▶ [핵심 2] aspect-ratio 제거 및 높이 제한 해제 (원본 비율 유지) ◀◀◀
+          className="relative w-full rounded-2xl overflow-hidden mb-16 group shadow-2xl shadow-purple-900/20"
         >
+          {/* Next.js Image: fill 대신 width/height auto 사용 */}
           <Image
-            src="/images/atta-about.jpg" 
+            src={`${prefix}/images/atta-about.jpg`} // 수정된 경로 사용
             alt="Atta Members"
-            fill
-            className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: '100%', height: 'auto' }} // 가로 꽉 채우고 세로는 알아서 늘어남
+            className="transition-transform duration-1000 group-hover:scale-105" 
             priority 
           />
+          
+          {/* 노이즈 효과 (이미지 위에 덮어씌우기 위해 absolute 유지) */}
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
         </motion.div>
@@ -83,7 +93,7 @@ export default function About() {
             {/* 구분선 */}
             <div className="w-full h-px bg-gray-800" />
 
-            {/* [EN] 영어 소개 (추가됨!) */}
+            {/* [EN] 영어 소개 */}
             <div className="space-y-4 text-base md:text-lg font-light leading-relaxed text-gray-400 font-sans">
               <p>
                 Atta is a producing duo that unfolds stories of youth through dreamlike sounds and emotional lyrics.

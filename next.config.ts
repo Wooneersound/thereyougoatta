@@ -6,8 +6,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const nextConfig = {
   output: 'export',
   
-  // ★ 개발할 땐 '' (빈칸), 배포할 땐 '/thereyougoatta' 붙이기
-  basePath: isProd ? '/thereyougoatta' : '',
+
   
   images: {
     unoptimized: true,

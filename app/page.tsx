@@ -55,7 +55,7 @@ export default function Home() {
       {/* 4. 하단 카피라이트 */}
       <div className="absolute bottom-8 w-full text-center z-10 pointer-events-none mix-blend-difference">
         <p className="text-xs text-gray-500 tracking-[0.3em]">
-          © 2025 ATTA OFFICIAL.
+          © 2026 ATTA OFFICIAL.
         </p>
       </div>
 
